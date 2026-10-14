@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Versara - Real-time Translated Lyrical Discovery</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;650;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "outline-variant": "#4a4550",
+            "primary-fixed-dim": "#d6baff",
+            "secondary": "#ebbda6",
+            "tertiary": "#d5cef1",
+            "on-secondary-container": "#d8ac96",
+            "on-secondary": "#46291a",
+            "surface-tint": "#d6baff",
+            "surface-variant": "#353341",
+            "on-tertiary": "#312d48",
+            "on-error-container": "#ffdad6",
+            "text-muted": "#868099",
+            "surface-container-highest": "#353341",
+            "on-surface-variant": "#ccc3d2",
+            "on-surface": "#e4e0f2",
+            "text-primary": "#F8F6FF",
+            "inverse-surface": "#e4e0f2",
+            "on-secondary-fixed": "#2e1507",
+            "secondary-fixed": "#ffdbcb",
+            "primary-fixed": "#ecdcff",
+            "surface-container-low": "#1b1a26",
+            "on-secondary-fixed-variant": "#603f2e",
+            "surface-dim": "#13121e",
+            "surface-container": "#1f1e2b",
+            "tertiary-container": "#b9b3d5",
+            "error": "#ffb4ab",
+            "feedback-success": "#9EE4C1",
+            "surface-bright": "#393845",
+            "surface-container-lowest": "#0e0d19",
+            "primary-container": "#c9a7ff",
+            "feedback-danger": "#FF9C9C",
+            "on-primary-fixed": "#270057",
+            "error-container": "#93000a",
+            "surface": "#13121e",
+            "surface-container-high": "#2a2935",
+            "background": "#13121e",
+            "surface-base": "#151420",
+            "inverse-on-surface": "#302f3c",
+            "primary": "#dfc9ff",
+            "surface-raised": "#302C47",
+            "on-tertiary-container": "#494461",
+            "tertiary-fixed-dim": "#c9c2e5",
+            "on-tertiary-fixed": "#1c1832",
+            "on-primary": "#3d1d6d",
+            "surface-card": "#222033",
+            "outline": "#958e9b",
+            "on-background": "#e4e0f2",
+            "surface-border": "#49445F",
+            "secondary-container": "#603f2e",
+            "on-tertiary-fixed-variant": "#484360",
+            "on-primary-fixed-variant": "#553685",
+            "tertiary-fixed": "#e5deff",
+            "text-secondary": "#B3ADC7",
+            "on-primary-container": "#563786",
+            "secondary-fixed-dim": "#ebbda6",
+            "inverse-primary": "#6d4e9f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem",
+            "margin": "2rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "lyric-active-mobile": ["Inter"],
+            "lyric-inactive": ["Inter"],
+            "lyric-active": ["Inter"],
+            "lyric-sub": ["Inter"],
+            "display": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "650"}],
+            "caption": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "650"}],
+            "lyric-active-mobile": ["21px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "650"}],
+            "lyric-inactive": ["17px", {"lineHeight": "26px", "fontWeight": "400"}],
+            "lyric-active": ["24px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "650"}],
+            "lyric-sub": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+            "display": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "18px", "fontWeight": "600"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Dark Claymorphism Custom Specular & Shadow Layers */
+    .clay-surface-card {
+      box-shadow: 0 14px 30px rgba(7, 5, 17, 0.45),
+                  inset 1.5px 1.5px 2.5px rgba(255, 255, 255, 0.08),
+                  inset -3px -4px 8px rgba(6, 5, 16, 0.3);
+    }
+    .clay-trough {
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+                  inset -1px -1px 2px rgba(255, 255, 255, 0.03);
+    }
+    .clay-button-primary {
+      box-shadow: 0 10px 24px rgba(201, 167, 255, 0.22),
+                  inset 2px 2px 3px rgba(255, 255, 255, 0.4),
+                  inset -2px -3px 6px rgba(89, 58, 140, 0.35);
+    }
+    .clay-raised-pill {
+      box-shadow: 0 8px 16px rgba(7, 5, 17, 0.35),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.12),
+                  inset -2px -2px 6px rgba(0, 0, 0, 0.3);
+    }
+    .clay-icon-btn {
+      box-shadow: 0 6px 14px rgba(7, 5, 17, 0.3),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+                  inset -1.5px -1.5px 4px rgba(0, 0, 0, 0.25);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface-base text-text-primary antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-surface-base">
+<!-- Mobile Viewport Container (390px x 844px mobile constraint) -->
+<div class="w-full max-w-[390px] min-h-[844px] flex flex-col justify-between bg-surface-base relative px-4 pt-3 pb-24 overflow-x-hidden">
+<!-- Top Status & Nav Area: Shared TopAppBar Component Applied -->
+<header class="w-full pt-1 pb-3">
+<div class="flex justify-between items-center w-full px-2 max-w-7xl mx-auto h-14 bg-surface dark:bg-surface rounded-2xl shadow-md border-0">
+<!-- Brand / Leading Note -->
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-surface-raised clay-icon-btn flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="music_note">music_note</span>
+</div>
+<span class="text-headline-lg-mobile font-headline-lg-mobile text-text-primary font-bold tracking-tight">Versara</span>
+</div>
+<!-- Trailing Settings Action Button -->
+<button aria-label="Settings" class="w-10 h-10 rounded-xl bg-surface-raised clay-icon-btn flex items-center justify-center text-text-muted hover:text-primary transition-colors duration-150 active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[21px]" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 flex flex-col space-y-6 pt-2 pb-6">
+<!-- Hero Section: Intimate & Centered -->
+<section class="text-center px-2 pt-2">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-text-primary tracking-tight font-bold mb-2">
+          Feel the music.<br/>Understand every word.
+        </h1>
+<p class="text-body-sm font-body-sm text-text-muted max-w-[280px] mx-auto leading-relaxed">
+          Real-time synchronized translations for lyrical immersion.
+        </p>
+</section>
+<!-- Main Clay Input Card: The Core Interaction Anchor -->
+<section class="w-full">
+<div class="w-full bg-surface-card clay-surface-card rounded-[24px] p-5 flex flex-col gap-4">
+<!-- Input Bar Container (Clay Trough) -->
+<div class="relative w-full">
+<div class="flex items-center w-full bg-surface-base clay-trough rounded-[18px] px-3.5 py-3 border border-surface-border/40 focus-within:border-primary-container/70 focus-within:ring-2 focus-within:ring-primary-container/30 transition-all">
+<span class="material-symbols-outlined text-text-muted mr-2.5 text-[20px] shrink-0" data-icon="link">link</span>
+<input autocomplete="off" class="bg-transparent border-0 p-0 text-text-primary text-body-sm font-body-sm placeholder:text-text-muted focus:ring-0 w-full outline-none" id="songUrlInput" placeholder="Paste a YouTube song link" spellcheck="false" type="url"/>
+<button aria-label="Clear or paste clipboard" class="text-text-muted hover:text-text-primary text-xs font-semibold px-1.5 py-0.5 rounded bg-surface-raised shrink-0 active:scale-95 transition-transform" type="button">
+                PASTE
+              </button>
+</div>
+</div>
+<!-- Prominent Lavender Clay Action Button -->
+<button class="w-full py-3.5 px-4 bg-primary-container clay-button-primary rounded-[18px] text-surface-base font-semibold text-body-lg font-body-lg flex items-center justify-center gap-2 hover:opacity-95 active:translate-y-0.5 transition-all cursor-pointer" type="button">
+<span>Open song</span>
+<span class="material-symbols-outlined text-[20px] font-bold" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Subtle Status Micro-caption -->
+<div class="flex items-center justify-center gap-2 pt-1">
+<span class="inline-block w-2 h-2 rounded-full bg-feedback-success/80 animate-pulse"></span>
+<span class="text-caption font-caption text-text-muted">Instant translation engine ready</span>
+</div>
+</div>
+</section>
+<!-- Recent Listens Section -->
+<section class="w-full pt-1">
+<div class="flex items-center justify-between mb-3 px-1">
+<span class="text-caption font-caption text-text-secondary tracking-wide uppercase font-semibold">Recent listens</span>
+<span class="text-caption font-caption text-text-muted cursor-pointer hover:text-primary transition-colors">Clear history</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Recent Item 1 -->
+<div class="w-full bg-surface-card clay-surface-card rounded-[20px] p-3 flex items-center justify-between gap-3 cursor-pointer group active:translate-y-0.5 transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<!-- Thumbnail Container with High Quality Context Image -->
+<div class="w-14 h-14 rounded-xl overflow-hidden bg-surface-raised shrink-0 relative clay-trough">
+<img alt="Stay With Me Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A moody, vintage Japanese city pop vinyl album cover bathed in neon lavender and midnight plum ambient city lights. The aesthetic is tactile and retro-futuristic with deep velvet shadows, fine grain, and an evocative aesthetic of late-night Tokyo rain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC0f8oK4Vv6bLJkL7rffonnLmUMRitY9sgx5rr9kA_cDxqS9ym0Cy7q8CBNewtbnxx161iZ8GPxkkMivoztkFnoSx9xoNmKOhyFEpxyJNV0xMF4OIlh5-wh3rnllq2Vdl-RG3dMTEEAjKjTcpLp-f-0drhVIx5C4_ll4Moi88R4LlopzAt7XdOs4ORKwbx4EdVXCW51N0cNCDBVsg5YRAi832CUz1J-_TlxROYi0q-M0ibn1RlxVuq"/>
+</div>
+<!-- Metadata -->
+<div class="flex flex-col min-w-0">
+<h4 class="text-body-sm font-body-sm text-text-primary font-semibold truncate group-hover:text-primary transition-colors">
+                  Stay With Me
+                </h4>
+<p class="text-caption font-caption text-text-muted truncate">
+                  Miki Matsubara <span class="text-primary/70 text-[11px] font-medium ml-1">[Japanese]</span>
+</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] leading-none px-2 py-0.5 rounded-full bg-surface-raised text-text-muted font-mono font-medium">
+                    4:32
+                  </span>
+<span class="text-caption font-caption text-feedback-success text-[11px] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Synced
+                  </span>
+</div>
+</div>
+</div>
+<!-- Play Mini Clay Action -->
+<button aria-label="Play Stay With Me" class="w-10 h-10 rounded-full bg-surface-raised clay-icon-btn flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-surface-base transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Recent Item 2 -->
+<div class="w-full bg-surface-card clay-surface-card rounded-[20px] p-3 flex items-center justify-between gap-3 cursor-pointer group active:translate-y-0.5 transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<!-- Thumbnail Container with High Quality Context Image -->
+<div class="w-14 h-14 rounded-xl overflow-hidden bg-surface-raised shrink-0 relative clay-trough">
+<img alt="Night Dancer Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Minimalist urban nighttime street scene with gentle lavender and plum ambient reflections on wet asphalt. The moody cinematic shot depicts subtle reflections and soft bokeh lights, matching a cozy modern midnight J-Pop audio discovery theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM0igk__Ixl2ARBK4JdTK-or3SYVmGWPWOzUSEz9x9-wTvZS5p7csOpjglBsmYq5XlPJgQZrG5COGYyNM9wNNUJKXKnszUcMNqn-bL6uvmDZ79qr3ulqUGWurO7Pl0-BKnRVVTZwBvW_gbgQiC8sqglP_JkdMpJ_usAPhC0ua4HtrPtGQIwSiHEEIXof9ZPqhGrMMPBmljF0ZMyUUONZ5Q23rjvEWft9Q1LKCBi2U9Svc18xmLZcB_"/>
+</div>
+<!-- Metadata -->
+<div class="flex flex-col min-w-0">
+<h4 class="text-body-sm font-body-sm text-text-primary font-semibold truncate group-hover:text-primary transition-colors">
+                  Night Dancer
+                </h4>
+<p class="text-caption font-caption text-text-muted truncate">
+                  imase <span class="text-primary/70 text-[11px] font-medium ml-1">[Japanese]</span>
+</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] leading-none px-2 py-0.5 rounded-full bg-surface-raised text-text-muted font-mono font-medium">
+                    3:30
+                  </span>
+<span class="text-caption font-caption text-feedback-success text-[11px] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Synced
+                  </span>
+</div>
+</div>
+</div>
+<!-- Play Mini Clay Action -->
+<button aria-label="Play Night Dancer" class="w-10 h-10 rounded-full bg-surface-raised clay-icon-btn flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-surface-base transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom PWA Pill Banner: Tactile Raised Module -->
+<section class="w-full pt-1">
+<div class="w-full bg-surface-raised clay-raised-pill rounded-2xl px-4 py-3 flex items-center justify-between border border-surface-border/30">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-base clay-trough flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-text-primary leading-tight">Install Versara</span>
+<span class="text-caption font-caption text-text-muted text-[11px]">Add to home screen for instant lyrics</span>
+</div>
+</div>
+<button aria-label="Add Versara to home screen" class="px-3 py-1.5 rounded-xl bg-surface-card hover:bg-surface-bright text-text-primary text-caption font-caption font-semibold clay-icon-btn active:scale-95 transition-all shrink-0" type="button">
+            Install
+          </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar: Shared Component Implementation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-card dark:bg-surface-card shadow-lg border-0">
+<!-- Destination 1: Listen (Semantically Active on Mobile Home) -->
+<button class="flex flex-col items-center justify-center bg-surface-raised dark:bg-surface-raised text-primary dark:text-primary rounded-xl px-4 py-1.5 shadow-sm active:translate-y-0.5 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="headphones">headphones</span>
+<span class="text-label-md font-label-md text-[11px] mt-0.5">Listen</span>
+</button>
+<!-- Destination 2: Library -->
+<button class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted px-4 py-1.5 hover:text-text-primary dark:hover:text-text-primary transition-colors duration-150 active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="library_music">library_music</span>
+<span class="text-label-md font-label-md text-[11px] mt-0.5">Library</span>
+</button>
+<!-- Destination 3: Calibrate -->
+<button class="flex flex-col items-center justify-center text-text-muted dark:text-text-muted px-4 py-1.5 hover:text-text-primary dark:hover:text-text-primary transition-colors duration-150 active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md text-[11px] mt-0.5">Calibrate</span>
+</button>
+</nav>
+</div>
+<script>
+    // Micro-interactions for smooth paste and tactile button feedback
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('songUrlInput');
+      const pasteButtons = document.querySelectorAll('button:has(span:contains("PASTE")), button');
+
+      // Click sound simulation / tactile feel
+      const clayElements = document.querySelectorAll('.clay-surface-card, .clay-button-primary, .clay-icon-btn');
+      clayElements.forEach(el => {
+        el.addEventListener('pointerdown', () => {
+          el.style.transform = 'translateY(1.5px)';
+        });
+        el.addEventListener('pointerup', () => {
+          el.style.transform = '';
+        });
+        el.addEventListener('pointerleave', () => {
+          el.style.transform = '';
+        });
+      });
+    });
+  </script>
+</body></html>

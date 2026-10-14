@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Versara - Real-time Translated Lyrical Discovery</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "outline-variant": "#4a4550",
+            "primary-fixed-dim": "#d6baff",
+            "secondary": "#ebbda6",
+            "tertiary": "#d5cef1",
+            "on-secondary-container": "#d8ac96",
+            "on-secondary": "#46291a",
+            "surface-tint": "#d6baff",
+            "surface-variant": "#353341",
+            "on-tertiary": "#312d48",
+            "on-error-container": "#ffdad6",
+            "text-muted": "#868099",
+            "surface-container-highest": "#353341",
+            "on-surface-variant": "#ccc3d2",
+            "on-surface": "#e4e0f2",
+            "text-primary": "#F8F6FF",
+            "inverse-surface": "#e4e0f2",
+            "on-secondary-fixed": "#2e1507",
+            "secondary-fixed": "#ffdbcb",
+            "primary-fixed": "#ecdcff",
+            "surface-container-low": "#1b1a26",
+            "on-secondary-fixed-variant": "#603f2e",
+            "surface-dim": "#13121e",
+            "surface-container": "#1f1e2b",
+            "tertiary-container": "#b9b3d5",
+            "error": "#ffb4ab",
+            "feedback-success": "#9EE4C1",
+            "surface-bright": "#393845",
+            "surface-container-lowest": "#0e0d19",
+            "primary-container": "#c9a7ff",
+            "feedback-danger": "#FF9C9C",
+            "on-primary-fixed": "#270057",
+            "error-container": "#93000a",
+            "surface": "#13121e",
+            "surface-container-high": "#2a2935",
+            "background": "#13121e",
+            "surface-base": "#151420",
+            "inverse-on-surface": "#302f3c",
+            "primary": "#dfc9ff",
+            "surface-raised": "#302C47",
+            "on-tertiary-container": "#494461",
+            "tertiary-fixed-dim": "#c9c2e5",
+            "on-tertiary-fixed": "#1c1832",
+            "on-primary": "#3d1d6d",
+            "surface-card": "#222033",
+            "outline": "#958e9b",
+            "on-background": "#e4e0f2",
+            "surface-border": "#49445F",
+            "secondary-container": "#603f2e",
+            "on-tertiary-fixed-variant": "#484360",
+            "on-primary-fixed-variant": "#553685",
+            "tertiary-fixed": "#e5deff",
+            "text-secondary": "#B3ADC7",
+            "on-primary-container": "#563786",
+            "secondary-fixed-dim": "#ebbda6",
+            "inverse-primary": "#6d4e9f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1.25rem",
+            "3xl": "1.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2rem",
+            "margin": "2rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "caption": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "lyric-active-mobile": ["Inter"],
+            "lyric-inactive": ["Inter"],
+            "lyric-active": ["Inter"],
+            "lyric-sub": ["Inter"],
+            "display": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "650" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "650" }],
+            "lyric-active-mobile": ["21px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "650" }],
+            "lyric-inactive": ["17px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "lyric-active": ["24px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "650" }],
+            "lyric-sub": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "display": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Dark Claymorphism Tactile Surfaces */
+    .clay-surface-card {
+      background-color: #222033;
+      box-shadow: 
+        0 12px 28px rgba(7, 5, 17, 0.45),
+        inset 2px 2px 3px rgba(255, 255, 255, 0.07),
+        inset -3px -4px 8px rgba(6, 5, 16, 0.25);
+    }
+
+    .clay-surface-raised {
+      background-color: #302C47;
+      box-shadow: 
+        0 8px 16px rgba(7, 5, 17, 0.35),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.12),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .clay-trough {
+      background-color: #151420;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset -1px -1px 2px rgba(255, 255, 255, 0.03);
+    }
+
+    .clay-button-primary {
+      background-color: #C9A7FF;
+      box-shadow: 
+        0 10px 24px rgba(201, 167, 255, 0.22),
+        inset 2px 2px 3px rgba(255, 255, 255, 0.45),
+        inset -2px -3px 6px rgba(89, 58, 140, 0.35);
+    }
+
+    .clay-button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 
+        0 12px 26px rgba(201, 167, 255, 0.28),
+        inset 2px 2px 3px rgba(255, 255, 255, 0.5),
+        inset -2px -3px 6px rgba(89, 58, 140, 0.35);
+    }
+
+    .clay-button-primary:active {
+      transform: translateY(1.5px);
+      box-shadow: 
+        0 4px 12px rgba(201, 167, 255, 0.18),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+        inset -1px -1px 4px rgba(89, 58, 140, 0.4);
+    }
+
+    .clay-pill-interactive:hover {
+      transform: translateY(-1px);
+    }
+    .clay-pill-interactive:active {
+      transform: translateY(1.5px);
+    }
+  </style>
+</head>
+<body class="bg-surface-base text-text-primary min-h-screen selection:bg-primary selection:text-on-primary font-body-lg text-body-lg flex flex-col justify-between antialiased">
+<!-- Top App Bar Navigation Shell -->
+<header class="w-full bg-surface shadow-md sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-4 md:px-6 max-w-7xl mx-auto h-16">
+<!-- Brand & Leading Icon -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl clay-surface-raised flex items-center justify-center text-primary transition-transform duration-150 active:translate-y-0.5">
+<span class="material-symbols-outlined" data-icon="music_note" data-weight="fill" style="font-variation-settings: 'FILL' 1;">music_note</span>
+</div>
+<span class="text-headline-lg font-headline-lg text-text-primary font-bold tracking-tight">Versara</span>
+</div>
+<!-- Desktop Center Navigation Shell -->
+<nav class="hidden md:flex items-center space-x-2 bg-surface-card px-2 py-1.5 rounded-2xl border border-surface-border/30">
+<button class="flex items-center space-x-2 px-4 py-1.5 rounded-xl text-primary font-bold bg-surface-raised text-label-md font-label-md transition-colors duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="headphones">headphones</span>
+<span>Listen</span>
+</button>
+<button class="flex items-center space-x-2 px-4 py-1.5 rounded-xl text-text-muted hover:text-text-primary text-label-md font-label-md transition-colors duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="library_music">library_music</span>
+<span>Library</span>
+</button>
+<button class="flex items-center space-x-2 px-4 py-1.5 rounded-xl text-text-muted hover:text-text-primary text-label-md font-label-md transition-colors duration-150">
+<span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+<span>Calibrate</span>
+</button>
+</nav>
+<!-- Trailing Tactile Actions -->
+<div class="flex items-center space-x-3">
+<!-- Install PWA Button -->
+<button class="hidden sm:flex items-center space-x-2 px-3.5 py-1.5 rounded-xl clay-surface-raised text-text-secondary hover:text-text-primary border border-surface-border/40 text-label-md font-label-md transition-all duration-150 active:translate-y-0.5">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+<span>Install App</span>
+</button>
+<!-- Settings Gear Icon Button -->
+<button aria-label="Settings" class="w-10 h-10 rounded-xl clay-surface-raised flex items-center justify-center text-text-secondary hover:text-primary transition-all duration-150 active:translate-y-0.5 border border-surface-border/40">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Center Container (Uncluttered, max-w-4xl) -->
+<main class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-14 flex-1 flex flex-col justify-center">
+<!-- Center Hero Section -->
+<div class="text-center mb-10 md:mb-12">
+<!-- Ambient tactile pill badge -->
+<div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full clay-surface-raised border border-surface-border/40 mb-6 transition-transform">
+<span class="w-2 h-2 rounded-full bg-feedback-success animate-pulse"></span>
+<span class="text-caption font-caption text-text-secondary tracking-wide">Real-time bilingual phonetics &amp; translation</span>
+</div>
+<!-- Main Tagline in Clean Inter typography -->
+<h1 class="text-3xl sm:text-4xl md:text-[44px] font-bold text-text-primary leading-tight tracking-tight mb-4">
+        Feel the music. Understand every word.
+      </h1>
+<!-- Calm Supporting Description -->
+<p class="text-base sm:text-lg text-text-secondary max-w-xl mx-auto font-normal">
+        Real-time synchronized translations for complete lyrical immersion.
+      </p>
+</div>
+<!-- Primary Clay URL Card -->
+<div class="clay-surface-card rounded-3xl p-5 sm:p-7 border border-surface-border/20 mb-12">
+<!-- Input Field & Action Container -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+<!-- Deep Molded Clay URL Trough Input -->
+<div class="relative flex-1 flex items-center clay-trough rounded-2xl px-4 py-2 border border-surface-border/30 focus-within:ring-2 focus-within:ring-primary/60 transition-all">
+<span class="material-symbols-outlined text-text-muted mr-3 select-none" data-icon="link">link</span>
+<input class="w-full bg-transparent border-none text-text-primary placeholder:text-text-muted focus:ring-0 text-body-sm font-body-sm py-2 px-0 focus:outline-none" id="url-input" placeholder="Paste a YouTube song link (e.g. https://www.youtube.com/watch?v=...)" type="text"/>
+<!-- Quick Paste Action Inside Field -->
+<button class="clay-surface-raised clay-pill-interactive text-text-secondary hover:text-text-primary px-3 py-1 rounded-xl text-caption font-caption border border-surface-border/40 ml-2 whitespace-nowrap transition-transform duration-150" id="paste-button" title="Paste from clipboard" type="button">
+            Paste
+          </button>
+</div>
+<!-- Lavender Primary Action CTA Button -->
+<button class="clay-button-primary rounded-[20px] px-6 py-3.5 flex items-center justify-center space-x-2 text-surface-base font-bold text-label-md font-label-md transition-all duration-150 whitespace-nowrap cursor-pointer" id="open-song-btn">
+<span>Open song</span>
+<span class="material-symbols-outlined text-base font-bold" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Bottom Engine Status Micro-Row -->
+<div class="mt-4 pt-3.5 border-t border-surface-border/20 flex items-center justify-between flex-wrap gap-2 text-caption font-caption text-text-muted">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm text-feedback-success" data-icon="check_circle">check_circle</span>
+<span>Instant translation engine ready</span>
+<span class="opacity-40">•</span>
+<span class="text-text-secondary">Supports Japanese, Korean, Spanish, French, Mandarin and 40+ languages</span>
+</div>
+<div class="hidden md:flex items-center space-x-1.5 text-text-muted">
+<span class="material-symbols-outlined text-xs" data-icon="bolt">bolt</span>
+<span>Zero latency sync</span>
+</div>
+</div>
+</div>
+<!-- Recent Listens Section -->
+<div class="w-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-muted text-lg" data-icon="history">history</span>
+<h2 class="text-label-md font-label-md text-text-primary font-bold">Recent Listens</h2>
+</div>
+<button class="text-caption font-caption text-text-muted hover:text-primary transition-colors flex items-center space-x-1">
+<span>View full library</span>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Compact Bento Clay Cards Grid (3 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Recent Song Card 1 -->
+<div class="clay-surface-card rounded-2xl p-3.5 border border-surface-border/20 flex flex-col justify-between hover:translate-y-[-2px] transition-all duration-200 group cursor-pointer">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 relative clay-trough">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Intimate album artwork cover featuring soft indigo and deep plum velvet lighting with delicate Japanese typography and subtle grain aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4vB7k2PmOGbuoTF-HjP-9aIF6fjO7h6CJ6HhFLnvUMQpjtokZRsoReqae5f4vDRcHvvoJQgzdAJjkkA220XaEISGbkpUn_44hhGY73R4TUKrlqcd1FbK3UV5mEBmtRHWNeIVA9b6_SvnD3O3E6_X_EjGpspolpMHqnnln83D9J3yB_upxrw6oclSGdeK6BWIREjg1Eyj73bgEngOEcs1PqaVY5IsWUF1SWxYgbFIPAoTy2HB4RWcD"/>
+<div class="absolute inset-0 bg-surface-base/30 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-body-sm font-body-sm font-semibold text-text-primary truncate group-hover:text-primary transition-colors">
+                Shinunoga E-Wa
+              </h3>
+<p class="text-caption font-caption text-text-muted truncate">Fujii Kaze</p>
+<div class="flex items-center space-x-1.5 mt-1">
+<span class="px-2 py-0.5 rounded-md clay-surface-raised text-[10px] font-medium text-primary border border-surface-border/30">JA → EN</span>
+<span class="text-[11px] text-text-muted">3:05</span>
+</div>
+</div>
+</div>
+<div class="pt-2.5 border-t border-surface-border/20 flex items-center justify-between text-caption font-caption text-text-muted">
+<span class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs text-feedback-success" data-icon="graphic_eq">graphic_eq</span>
+<span>100% synced</span>
+</span>
+<button class="w-7 h-7 rounded-lg clay-surface-raised flex items-center justify-center text-text-primary group-hover:bg-primary-container group-hover:text-surface-base transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Recent Song Card 2 -->
+<div class="clay-surface-card rounded-2xl p-3.5 border border-surface-border/20 flex flex-col justify-between hover:translate-y-[-2px] transition-all duration-200 group cursor-pointer">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 relative clay-trough">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Atmospheric modern album cover illuminated by warm peach and magenta neon reflections against a dark velvety shadow landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1K1wOxhBAbD_c1uiJARHTHy28SaZcacWz3V5QPa8aKBfK8IsvmfgCcHDNDpvX0vhdhluIE8AKKOKbuI6dxZN-jZD5TrCbjdMtqtM2Iyli_Hcq5t5w6B6NI48swZMgWXNntAFjgzO2UKQI1KH_xMnwWWLkeicoWF7wQTBwXPWAPIkEAaOMbOzpklbs0H47Wwv4izMRd0Jl6EhfNM9SM4QGIIkZpuAeHkUUuI9UrJbxnWiyr2i6KL8O"/>
+<div class="absolute inset-0 bg-surface-base/30 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-body-sm font-body-sm font-semibold text-text-primary truncate group-hover:text-primary transition-colors">
+                Ditto
+              </h3>
+<p class="text-caption font-caption text-text-muted truncate">NewJeans</p>
+<div class="flex items-center space-x-1.5 mt-1">
+<span class="px-2 py-0.5 rounded-md clay-surface-raised text-[10px] font-medium text-secondary border border-surface-border/30">KO → EN</span>
+<span class="text-[11px] text-text-muted">3:06</span>
+</div>
+</div>
+</div>
+<div class="pt-2.5 border-t border-surface-border/20 flex items-center justify-between text-caption font-caption text-text-muted">
+<span class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs text-feedback-success" data-icon="graphic_eq">graphic_eq</span>
+<span>100% synced</span>
+</span>
+<button class="w-7 h-7 rounded-lg clay-surface-raised flex items-center justify-center text-text-primary group-hover:bg-primary-container group-hover:text-surface-base transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Recent Song Card 3 -->
+<div class="clay-surface-card rounded-2xl p-3.5 border border-surface-border/20 flex flex-col justify-between hover:translate-y-[-2px] transition-all duration-200 group cursor-pointer">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 relative clay-trough">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Ethereal French chanson album visual with minimalist dark moody cinematic tones and soft ambient violet backlight glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNqLWI0Nxx1-hAkbQEDJPOSpofATKYFZEjUh1QHjVTZy7SrluDYh4KwWMxsPnKExERCmEYw4H69IblMDpUkLTWSt51T15zArBk0nnAXdtjR3S7WnynKBTtc_VZb6OScVOvfzffSzMLjxWHLbf2uUBVESSkQoq_4ydD_txZFkB5LzSCFTMChs3nqmAbp4_LQx4pozWK7XBHQuWcvGm3jRhpZbGWwDz7EEmdpdxQq8SjTsTPpkgxdyi4"/>
+<div class="absolute inset-0 bg-surface-base/30 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="text-body-sm font-body-sm font-semibold text-text-primary truncate group-hover:text-primary transition-colors">
+                Tourner Dans Le Vide
+              </h3>
+<p class="text-caption font-caption text-text-muted truncate">Indila</p>
+<div class="flex items-center space-x-1.5 mt-1">
+<span class="px-2 py-0.5 rounded-md clay-surface-raised text-[10px] font-medium text-tertiary border border-surface-border/30">FR → EN</span>
+<span class="text-[11px] text-text-muted">4:06</span>
+</div>
+</div>
+</div>
+<div class="pt-2.5 border-t border-surface-border/20 flex items-center justify-between text-caption font-caption text-text-muted">
+<span class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs text-feedback-success" data-icon="graphic_eq">graphic_eq</span>
+<span>100% synced</span>
+</span>
+<button class="w-7 h-7 rounded-lg clay-surface-raised flex items-center justify-center text-text-primary group-hover:bg-primary-container group-hover:text-surface-base transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav Bar (Shared Component Execution, Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-card shadow-lg border-t-0">
+<!-- Listen (Active Destination) -->
+<a class="flex flex-col items-center justify-center bg-surface-raised text-primary rounded-xl px-4 py-1.5 shadow-sm active:translate-y-0.5 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="headphones">headphones</span>
+<span class="text-label-md font-label-md text-xs mt-0.5">Listen</span>
+</a>
+<!-- Library (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-muted px-4 py-1.5 hover:text-text-primary transition-colors duration-150 active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="library_music">library_music</span>
+<span class="text-label-md font-label-md text-xs mt-0.5">Library</span>
+</a>
+<!-- Calibrate (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-muted px-4 py-1.5 hover:text-text-primary transition-colors duration-150 active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md text-xs mt-0.5">Calibrate</span>
+</a>
+</nav>
+<!-- Footer Subtle Stamp -->
+<footer class="w-full text-center py-6 text-caption font-caption text-text-muted/60 select-none pb-20 md:pb-6">
+<span>Versara Audio Translation System • Minimalist tactile design</span>
+</footer>
+<!-- Light Vanilla Script for Micro-Interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pasteBtn = document.getElementById('paste-button');
+      const urlInput = document.getElementById('url-input');
+      const openBtn = document.getElementById('open-song-btn');
+
+      pasteBtn?.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            urlInput.value = text;
+            urlInput.focus();
+          }
+        } catch (err) {
+          urlInput.value = 'https://www.youtube.com/watch?v=dFf4AgBNR1E';
+          urlInput.focus();
+        }
+      });
+
+      openBtn?.addEventListener('click', () => {
+        if (!urlInput.value) {
+          urlInput.value = 'https://www.youtube.com/watch?v=dFf4AgBNR1E';
+        }
+        openBtn.classList.add('opacity-80');
+        setTimeout(() => openBtn.classList.remove('opacity-80'), 150);
+      });
+    });
+  </script>
+</body></html>

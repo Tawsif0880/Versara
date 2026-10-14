@@ -1,0 +1,10 @@
+node_modules
+.next
+package-lock.json
+stitch_versara_synced_lyrics_pwa
+test-results
+playwright-report
+Versara_PRD.md
+DESIGN.md
+STITCH_PROMPT.md
+CODEX_BUILD_PROMPT.md
